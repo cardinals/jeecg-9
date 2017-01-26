@@ -14,7 +14,7 @@
 </script>
 <script type="text/javascript">
     window.setTimeout(function() {
-        window.location.replace('repairController.do?repair');
+        //window.location.replace('repairController.do?repair');
     }, 1000);
 </script>
 </body>

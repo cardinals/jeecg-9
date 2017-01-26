@@ -20,8 +20,12 @@
 	<context:component-scan base-package="org.jeecgframework.web.*">
 			<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
+
 	<!-- 加载自己的service -->
 	<context:component-scan base-package="com.lyq.*">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	<context:component-scan base-package="com.lyq.ssj.*">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
@@ -105,13 +109,12 @@
 			<list>
 				<value>org.jeecgframework.web.system.pojo.*</value>
 				<value>org.jeecgframework.web.demo.entity.*</value>
-				<!--<value>org.jeecgframework.web.test.entity.*</value>-->
 				<value>org.jeecgframework.web.cgform.entity.*</value>
 				<value>org.jeecgframework.web.cgreport.entity.*</value>
 				<value>org.jeecgframework.web.cgdynamgraph.entity.*</value>
 				<value>org.jeecgframework.web.system.sms.*</value>
+				<value>com.lyq.ssj.*</value>
 				<value>com.jeecg.*</value>
-				<value>com.lyq.entity.*</value>
 			</list>
 		</property>
 	</bean>
