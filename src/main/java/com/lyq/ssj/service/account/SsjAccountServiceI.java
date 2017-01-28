@@ -1,5 +1,5 @@
-package com.lyq.ssj.service;
-import com.lyq.ssj.entity.SsjAccountEntity;
+package com.lyq.ssj.service.account;
+import com.lyq.ssj.entity.account.SsjAccountEntity;
 import org.jeecgframework.core.common.service.CommonService;
 
 import java.io.Serializable;

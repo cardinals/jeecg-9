@@ -1,6 +1,6 @@
-package com.lyq.ssj.controller;
-import com.lyq.ssj.entity.SsjAccountEntity;
-import com.lyq.ssj.service.SsjAccountServiceI;
+package com.lyq.ssj.controller.account;
+import com.lyq.ssj.entity.account.SsjAccountEntity;
+import com.lyq.ssj.service.account.SsjAccountServiceI;
 import java.util.ArrayList;
 import java.util.List;
 import java.text.SimpleDateFormat;
@@ -65,9 +65,9 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 /**   
  * @Title: Controller  
- * @Description: 随手记账户
+ * @Description: 账户
  * @author onlineGenerator
- * @date 2017-01-18 17:09:19
+ * @date 2017-01-26 22:23:36
  * @version V1.0   
  *
  */
@@ -89,13 +89,13 @@ public class SsjAccountController extends BaseController {
 
 
 	/**
-	 * 随手记账户列表 页面跳转
+	 * 账户列表 页面跳转
 	 * 
 	 * @return
 	 */
 	@RequestMapping(params = "list")
 	public ModelAndView list(HttpServletRequest request) {
-		return new ModelAndView("com/lyq/ssj/ssjAccountList");
+		return new ModelAndView("com/lyq/ssj/account/ssjAccountList");
 	}
 
 	/**
@@ -123,7 +123,7 @@ public class SsjAccountController extends BaseController {
 	}
 
 	/**
-	 * 删除随手记账户
+	 * 删除账户
 	 * 
 	 * @return
 	 */
@@ -133,13 +133,13 @@ public class SsjAccountController extends BaseController {
 		String message = null;
 		AjaxJson j = new AjaxJson();
 		ssjAccount = systemService.getEntity(SsjAccountEntity.class, ssjAccount.getId());
-		message = "随手记账户删除成功";
+		message = "账户删除成功";
 		try{
 			ssjAccountService.delete(ssjAccount);
 			systemService.addLog(message, Globals.Log_Type_DEL, Globals.Log_Leavel_INFO);
 		}catch(Exception e){
 			e.printStackTrace();
-			message = "随手记账户删除失败";
+			message = "账户删除失败";
 			throw new BusinessException(e.getMessage());
 		}
 		j.setMsg(message);
@@ -147,7 +147,7 @@ public class SsjAccountController extends BaseController {
 	}
 	
 	/**
-	 * 批量删除随手记账户
+	 * 批量删除账户
 	 * 
 	 * @return
 	 */
@@ -156,7 +156,7 @@ public class SsjAccountController extends BaseController {
 	public AjaxJson doBatchDel(String ids,HttpServletRequest request){
 		String message = null;
 		AjaxJson j = new AjaxJson();
-		message = "随手记账户删除成功";
+		message = "账户删除成功";
 		try{
 			for(String id:ids.split(",")){
 				SsjAccountEntity ssjAccount = systemService.getEntity(SsjAccountEntity.class, 
@@ -167,7 +167,7 @@ public class SsjAccountController extends BaseController {
 			}
 		}catch(Exception e){
 			e.printStackTrace();
-			message = "随手记账户删除失败";
+			message = "账户删除失败";
 			throw new BusinessException(e.getMessage());
 		}
 		j.setMsg(message);
@@ -176,7 +176,7 @@ public class SsjAccountController extends BaseController {
 
 
 	/**
-	 * 添加随手记账户
+	 * 添加账户
 	 * 
 	 * @param ids
 	 * @return
@@ -186,13 +186,13 @@ public class SsjAccountController extends BaseController {
 	public AjaxJson doAdd(SsjAccountEntity ssjAccount, HttpServletRequest request) {
 		String message = null;
 		AjaxJson j = new AjaxJson();
-		message = "随手记账户添加成功";
+		message = "账户添加成功";
 		try{
 			ssjAccountService.save(ssjAccount);
 			systemService.addLog(message, Globals.Log_Type_INSERT, Globals.Log_Leavel_INFO);
 		}catch(Exception e){
 			e.printStackTrace();
-			message = "随手记账户添加失败";
+			message = "账户添加失败";
 			throw new BusinessException(e.getMessage());
 		}
 		j.setMsg(message);
@@ -200,7 +200,7 @@ public class SsjAccountController extends BaseController {
 	}
 	
 	/**
-	 * 更新随手记账户
+	 * 更新账户
 	 * 
 	 * @param ids
 	 * @return
@@ -210,7 +210,7 @@ public class SsjAccountController extends BaseController {
 	public AjaxJson doUpdate(SsjAccountEntity ssjAccount, HttpServletRequest request) {
 		String message = null;
 		AjaxJson j = new AjaxJson();
-		message = "随手记账户更新成功";
+		message = "账户更新成功";
 		SsjAccountEntity t = ssjAccountService.get(SsjAccountEntity.class, ssjAccount.getId());
 		try {
 			MyBeanUtils.copyBeanNotNull2Bean(ssjAccount, t);
@@ -218,7 +218,7 @@ public class SsjAccountController extends BaseController {
 			systemService.addLog(message, Globals.Log_Type_UPDATE, Globals.Log_Leavel_INFO);
 		} catch (Exception e) {
 			e.printStackTrace();
-			message = "随手记账户更新失败";
+			message = "账户更新失败";
 			throw new BusinessException(e.getMessage());
 		}
 		j.setMsg(message);
@@ -227,7 +227,7 @@ public class SsjAccountController extends BaseController {
 	
 
 	/**
-	 * 随手记账户新增页面跳转
+	 * 账户新增页面跳转
 	 * 
 	 * @return
 	 */
@@ -237,10 +237,10 @@ public class SsjAccountController extends BaseController {
 			ssjAccount = ssjAccountService.getEntity(SsjAccountEntity.class, ssjAccount.getId());
 			req.setAttribute("ssjAccountPage", ssjAccount);
 		}
-		return new ModelAndView("com/lyq/ssj/ssjAccount-add");
+		return new ModelAndView("com/lyq/ssj/account/ssjAccount-add");
 	}
 	/**
-	 * 随手记账户编辑页面跳转
+	 * 账户编辑页面跳转
 	 * 
 	 * @return
 	 */
@@ -250,7 +250,7 @@ public class SsjAccountController extends BaseController {
 			ssjAccount = ssjAccountService.getEntity(SsjAccountEntity.class, ssjAccount.getId());
 			req.setAttribute("ssjAccountPage", ssjAccount);
 		}
-		return new ModelAndView("com/lyq/ssj/ssjAccount-update");
+		return new ModelAndView("com/lyq/ssj/account/ssjAccount-update");
 	}
 	
 	/**
@@ -276,9 +276,9 @@ public class SsjAccountController extends BaseController {
 		CriteriaQuery cq = new CriteriaQuery(SsjAccountEntity.class, dataGrid);
 		org.jeecgframework.core.extend.hqlsearch.HqlGenerateUtil.installHql(cq, ssjAccount, request.getParameterMap());
 		List<SsjAccountEntity> ssjAccounts = this.ssjAccountService.getListByCriteriaQuery(cq,false);
-		modelMap.put(NormalExcelConstants.FILE_NAME,"随手记账户");
+		modelMap.put(NormalExcelConstants.FILE_NAME,"账户");
 		modelMap.put(NormalExcelConstants.CLASS,SsjAccountEntity.class);
-		modelMap.put(NormalExcelConstants.PARAMS,new ExportParams("随手记账户列表", "导出人:"+ResourceUtil.getSessionUserName().getRealName(),
+		modelMap.put(NormalExcelConstants.PARAMS,new ExportParams("账户列表", "导出人:"+ResourceUtil.getSessionUserName().getRealName(),
 			"导出信息"));
 		modelMap.put(NormalExcelConstants.DATA_LIST,ssjAccounts);
 		return NormalExcelConstants.JEECG_EXCEL_VIEW;
@@ -292,9 +292,9 @@ public class SsjAccountController extends BaseController {
 	@RequestMapping(params = "exportXlsByT")
 	public String exportXlsByT(SsjAccountEntity ssjAccount,HttpServletRequest request,HttpServletResponse response
 			, DataGrid dataGrid,ModelMap modelMap) {
-    	modelMap.put(NormalExcelConstants.FILE_NAME,"随手记账户");
+    	modelMap.put(NormalExcelConstants.FILE_NAME,"账户");
     	modelMap.put(NormalExcelConstants.CLASS,SsjAccountEntity.class);
-    	modelMap.put(NormalExcelConstants.PARAMS,new ExportParams("随手记账户列表", "导出人:"+ResourceUtil.getSessionUserName().getRealName(),
+    	modelMap.put(NormalExcelConstants.PARAMS,new ExportParams("账户列表", "导出人:"+ResourceUtil.getSessionUserName().getRealName(),
     	"导出信息"));
     	modelMap.put(NormalExcelConstants.DATA_LIST,new ArrayList());
     	return NormalExcelConstants.JEECG_EXCEL_VIEW;

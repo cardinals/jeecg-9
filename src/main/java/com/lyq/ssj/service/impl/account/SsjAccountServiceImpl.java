@@ -1,7 +1,7 @@
-package com.lyq.ssj.service.impl;
-import com.lyq.ssj.service.SsjAccountServiceI;
+package com.lyq.ssj.service.impl.account;
+import com.lyq.ssj.service.account.SsjAccountServiceI;
 import org.jeecgframework.core.common.service.impl.CommonServiceImpl;
-import com.lyq.ssj.entity.SsjAccountEntity;
+import com.lyq.ssj.entity.account.SsjAccountEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package com.lyq.ssj.entity;
+package com.lyq.ssj.entity.account;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -20,9 +20,9 @@ import org.jeecgframework.poi.excel.annotation.Excel;
 
 /**   
  * @Title: Entity
- * @Description: 随手记账户
+ * @Description: 账户
  * @author onlineGenerator
- * @date 2017-01-18 17:09:19
+ * @date 2017-01-26 22:23:36
  * @version V1.0   
  *
  */
@@ -57,7 +57,6 @@ public class SsjAccountEntity implements java.io.Serializable {
 	@Excel(name="备注")
 	private java.lang.String remark;
 	/**账户类型id*/
-	@Excel(name="账户类型id")
 	private java.lang.String accountTypeId;
 	/**账户类型*/
 	@Excel(name="账户类型")
@@ -230,7 +229,7 @@ public class SsjAccountEntity implements java.io.Serializable {
 	 *方法: 取得java.lang.String
 	 *@return: java.lang.String  账户名
 	 */
-	@Column(name ="ACCOUNT",nullable=false,length=32)
+	@Column(name ="ACCOUNT",nullable=true,length=32)
 	public java.lang.String getAccount(){
 		return this.account;
 	}
