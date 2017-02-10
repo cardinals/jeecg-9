@@ -1,5 +1,6 @@
 package com.lyq.ssj.controller.account;
 import com.lyq.ssj.entity.account.SsjAccountEntity;
+import com.lyq.ssj.entity.accounttype.SsjAccountTypeEntity;
 import com.lyq.ssj.service.account.SsjAccountServiceI;
 import java.util.ArrayList;
 import java.util.List;
@@ -237,8 +238,11 @@ public class SsjAccountController extends BaseController {
 			ssjAccount = ssjAccountService.getEntity(SsjAccountEntity.class, ssjAccount.getId());
 			req.setAttribute("ssjAccountPage", ssjAccount);
 		}
+		List<SsjAccountTypeEntity> accountTypeList = systemService.getList(SsjAccountTypeEntity.class);
+		req.setAttribute("accountTypeList", accountTypeList);
 		return new ModelAndView("com/lyq/ssj/account/ssjAccount-add");
 	}
+
 	/**
 	 * 账户编辑页面跳转
 	 * 
@@ -250,6 +254,8 @@ public class SsjAccountController extends BaseController {
 			ssjAccount = ssjAccountService.getEntity(SsjAccountEntity.class, ssjAccount.getId());
 			req.setAttribute("ssjAccountPage", ssjAccount);
 		}
+		List<SsjAccountTypeEntity> accountTypeList = systemService.getList(SsjAccountTypeEntity.class);
+		req.setAttribute("accountTypeList", accountTypeList);
 		return new ModelAndView("com/lyq/ssj/account/ssjAccount-update");
 	}
 	
