@@ -1,4 +1,4 @@
-package com.lyq.work.entity.log;
+package com.lyq.work.entity.worklog;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -22,7 +22,7 @@ import org.jeecgframework.poi.excel.annotation.Excel;
  * @Title: Entity
  * @Description: 工作日志
  * @author onlineGenerator
- * @date 2017-02-10 16:36:21
+ * @date 2017-02-17 08:54:27
  * @version V1.0   
  *
  */
@@ -56,6 +56,9 @@ public class WorkLogEntity implements java.io.Serializable {
 	/**内容*/
 	@Excel(name="内容")
 	private java.lang.String content;
+	/**日期*/
+	@Excel(name="日期",format = "yyyy-MM-dd")
+	private java.util.Date date;
 	
 	/**
 	 *方法: 取得java.lang.String
@@ -251,5 +254,21 @@ public class WorkLogEntity implements java.io.Serializable {
 	 */
 	public void setContent(java.lang.String content){
 		this.content = content;
+	}
+	/**
+	 *方法: 取得java.util.Date
+	 *@return: java.util.Date  日期
+	 */
+	@Column(name ="DATE",nullable=true,length=32)
+	public java.util.Date getDate(){
+		return this.date;
+	}
+
+	/**
+	 *方法: 设置java.util.Date
+	 *@param: java.util.Date  日期
+	 */
+	public void setDate(java.util.Date date){
+		this.date = date;
 	}
 }

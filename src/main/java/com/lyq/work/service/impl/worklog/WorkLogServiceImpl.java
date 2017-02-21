@@ -1,7 +1,7 @@
-package com.lyq.work.service.impl.log;
-import com.lyq.work.service.log.WorkLogServiceI;
+package com.lyq.work.service.impl.worklog;
+import com.lyq.work.service.worklog.WorkLogServiceI;
 import org.jeecgframework.core.common.service.impl.CommonServiceImpl;
-import com.lyq.work.entity.log.WorkLogEntity;
+import com.lyq.work.entity.worklog.WorkLogEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.HashMap;
@@ -73,6 +73,7 @@ public class WorkLogServiceImpl extends CommonServiceImpl implements WorkLogServ
 		map.put("bpm_status", t.getBpmStatus());
 		map.put("title", t.getTitle());
 		map.put("content", t.getContent());
+		map.put("date", t.getDate());
 		return map;
 	}
  	
@@ -95,6 +96,7 @@ public class WorkLogServiceImpl extends CommonServiceImpl implements WorkLogServ
  		sql  = sql.replace("#{bpm_status}",String.valueOf(t.getBpmStatus()));
  		sql  = sql.replace("#{title}",String.valueOf(t.getTitle()));
  		sql  = sql.replace("#{content}",String.valueOf(t.getContent()));
+ 		sql  = sql.replace("#{date}",String.valueOf(t.getDate()));
  		sql  = sql.replace("#{UUID}",UUID.randomUUID().toString());
  		return sql;
  	}

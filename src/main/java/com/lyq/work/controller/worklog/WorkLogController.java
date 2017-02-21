@@ -1,8 +1,8 @@
-package com.lyq.work.controller.log;
-import com.lyq.work.entity.log.WorkLogEntity;
-import com.lyq.work.service.log.WorkLogServiceI;
-import java.util.ArrayList;
-import java.util.List;
+package com.lyq.work.controller.worklog;
+import com.lyq.work.entity.worklog.WorkLogEntity;
+import com.lyq.work.service.worklog.WorkLogServiceI;
+
+import java.util.*;
 import java.text.SimpleDateFormat;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -42,7 +42,6 @@ import java.io.IOException;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import java.util.Map;
 import org.jeecgframework.core.util.ExceptionUtil;
 
 import org.springframework.http.ResponseEntity;
@@ -56,7 +55,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.jeecgframework.core.beanvalidator.BeanValidators;
-import java.util.Set;
+
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 import java.net.URI;
@@ -67,7 +66,7 @@ import org.springframework.web.util.UriComponentsBuilder;
  * @Title: Controller  
  * @Description: 工作日志
  * @author onlineGenerator
- * @date 2017-02-10 16:36:20
+ * @date 2017-02-17 08:54:27
  * @version V1.0   
  *
  */
@@ -95,7 +94,7 @@ public class WorkLogController extends BaseController {
 	 */
 	@RequestMapping(params = "list")
 	public ModelAndView list(HttpServletRequest request) {
-		return new ModelAndView("com/lyq/work/log/workLogList");
+		return new ModelAndView("com/lyq/work/worklog/workLogList");
 	}
 
 	/**
@@ -114,6 +113,14 @@ public class WorkLogController extends BaseController {
 		org.jeecgframework.core.extend.hqlsearch.HqlGenerateUtil.installHql(cq, workLog, request.getParameterMap());
 		try{
 		//自定义追加查询条件
+		String query_date_begin = request.getParameter("date_begin");
+		String query_date_end = request.getParameter("date_end");
+		if(StringUtil.isNotEmpty(query_date_begin)){
+			cq.ge("date", new SimpleDateFormat("yyyy-MM-dd").parse(query_date_begin));
+		}
+		if(StringUtil.isNotEmpty(query_date_end)){
+			cq.le("date", new SimpleDateFormat("yyyy-MM-dd").parse(query_date_end));
+		}
 		}catch (Exception e) {
 			throw new BusinessException(e.getMessage());
 		}
@@ -235,9 +242,11 @@ public class WorkLogController extends BaseController {
 	public ModelAndView goAdd(WorkLogEntity workLog, HttpServletRequest req) {
 		if (StringUtil.isNotEmpty(workLog.getId())) {
 			workLog = workLogService.getEntity(WorkLogEntity.class, workLog.getId());
-			req.setAttribute("workLogPage", workLog);
+		} else {
+			workLog.setDate(new Date());// 设置默认日期
 		}
-		return new ModelAndView("com/lyq/work/log/workLog-add");
+		req.setAttribute("workLogPage", workLog);
+		return new ModelAndView("com/lyq/work/worklog/workLog-add");
 	}
 	/**
 	 * 工作日志编辑页面跳转
@@ -250,7 +259,7 @@ public class WorkLogController extends BaseController {
 			workLog = workLogService.getEntity(WorkLogEntity.class, workLog.getId());
 			req.setAttribute("workLogPage", workLog);
 		}
-		return new ModelAndView("com/lyq/work/log/workLog-update");
+		return new ModelAndView("com/lyq/work/worklog/workLog-update");
 	}
 	
 	/**

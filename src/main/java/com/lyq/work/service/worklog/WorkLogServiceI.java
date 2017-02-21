@@ -1,5 +1,5 @@
-package com.lyq.work.service.log;
-import com.lyq.work.entity.log.WorkLogEntity;
+package com.lyq.work.service.worklog;
+import com.lyq.work.entity.worklog.WorkLogEntity;
 import org.jeecgframework.core.common.service.CommonService;
 
 import java.io.Serializable;
