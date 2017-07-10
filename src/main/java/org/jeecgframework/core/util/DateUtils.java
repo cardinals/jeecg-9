@@ -12,9 +12,9 @@ import java.util.GregorianCalendar;
 import org.springframework.util.StringUtils;
 
 /**
- * 
+ *
  * 类描述：时间操作定义类
- * 
+ *
  * @author:  张代浩
  * @date： 日期：2012-12-8 时间：下午12:15:03
  * @version 1.0
@@ -49,7 +49,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 当前日历，这里用中国时间表示
-	 * 
+	 *
 	 * @return 以当地时区表示的系统当前日历
 	 */
 	public static Calendar getCalendar() {
@@ -58,7 +58,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 指定毫秒数表示的日历
-	 * 
+	 *
 	 * @param millis
 	 *            毫秒数
 	 * @return 指定毫秒数表示的日历
@@ -76,7 +76,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 当前日期
-	 * 
+	 *
 	 * @return 系统当前时间
 	 */
 	public static Date getDate() {
@@ -85,7 +85,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 指定毫秒数表示的日期
-	 * 
+	 *
 	 * @param millis
 	 *            毫秒数
 	 * @return 指定毫秒数表示的日期
@@ -96,7 +96,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 时间戳转换为字符串
-	 * 
+	 *
 	 * @param time
 	 * @return
 	 */
@@ -110,7 +110,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 字符串转换时间戳
-	 * 
+	 *
 	 * @param str
 	 * @return
 	 */
@@ -140,7 +140,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 日期转换为字符串
-	 * 
+	 *
 	 * @param date
 	 *            日期
 	 * @param format
@@ -174,7 +174,7 @@ public class DateUtils extends PropertyEditorSupport {
 	}
 	/**
 	 * 日期转换为字符串
-	 * 
+	 *
 	 * @param date
 	 *            日期
 	 * @param format
@@ -189,7 +189,7 @@ public class DateUtils extends PropertyEditorSupport {
 	}
 	/**
 	 * 日期转换为字符串
-	 * 
+	 *
 	 * @param date
 	 *            日期
 	 * @param format
@@ -207,7 +207,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 指定毫秒数的时间戳
-	 * 
+	 *
 	 * @param millis
 	 *            毫秒数
 	 * @return 指定毫秒数的时间戳
@@ -218,7 +218,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 以字符形式表示的时间戳
-	 * 
+	 *
 	 * @param time
 	 *            毫秒数
 	 * @return 以字符形式表示的时间戳
@@ -229,7 +229,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 系统当前的时间戳
-	 * 
+	 *
 	 * @return 系统当前的时间戳
 	 */
 	public static Timestamp getTimestamp() {
@@ -238,7 +238,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 指定日期的时间戳
-	 * 
+	 *
 	 * @param date
 	 *            指定日期
 	 * @return 指定日期的时间戳
@@ -249,7 +249,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 指定日历的时间戳
-	 * 
+	 *
 	 * @param cal
 	 *            指定日历
 	 * @return 指定日历的时间戳
@@ -273,7 +273,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 系统时间的毫秒数
-	 * 
+	 *
 	 * @return 系统时间的毫秒数
 	 */
 	public static long getMillis() {
@@ -282,7 +282,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 指定日历的毫秒数
-	 * 
+	 *
 	 * @param cal
 	 *            指定日历
 	 * @return 指定日历的毫秒数
@@ -293,7 +293,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 指定日期的毫秒数
-	 * 
+	 *
 	 * @param date
 	 *            指定日期
 	 * @return 指定日期的毫秒数
@@ -304,7 +304,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 指定时间戳的毫秒数
-	 * 
+	 *
 	 * @param ts
 	 *            指定时间戳
 	 * @return 指定时间戳的毫秒数
@@ -320,7 +320,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 默认方式表示的系统当前日期，具体格式：年-月-日
-	 * 
+	 *
 	 * @return 默认日期按“年-月-日“格式显示
 	 */
 	public static String formatDate() {
@@ -334,7 +334,7 @@ public class DateUtils extends PropertyEditorSupport {
 	}
 	/**
 	 * 指定日期的默认显示，具体格式：年-月-日
-	 * 
+	 *
 	 * @param cal
 	 *            指定的日期
 	 * @return 指定日期按“年-月-日“格式显示
@@ -345,7 +345,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 指定日期的默认显示，具体格式：年-月-日
-	 * 
+	 *
 	 * @param date
 	 *            指定的日期
 	 * @return 指定日期按“年-月-日“格式显示
@@ -356,7 +356,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 指定毫秒数表示日期的默认显示，具体格式：年-月-日
-	 * 
+	 *
 	 * @param millis
 	 *            指定的毫秒数
 	 * @return 指定毫秒数表示日期按“年-月-日“格式显示
@@ -367,7 +367,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 默认日期按指定格式显示
-	 * 
+	 *
 	 * @param pattern
 	 *            指定的格式
 	 * @return 默认日期按指定格式显示
@@ -378,7 +378,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 指定日期按指定格式显示
-	 * 
+	 *
 	 * @param cal
 	 *            指定的日期
 	 * @param pattern
@@ -391,7 +391,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 指定日期按指定格式显示
-	 * 
+	 *
 	 * @param date
 	 *            指定的日期
 	 * @param pattern
@@ -409,7 +409,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 默认方式表示的系统当前日期，具体格式：年-月-日 时：分
-	 * 
+	 *
 	 * @return 默认日期按“年-月-日 时：分“格式显示
 	 */
 	public static String formatTime() {
@@ -418,7 +418,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 指定毫秒数表示日期的默认显示，具体格式：年-月-日 时：分
-	 * 
+	 *
 	 * @param millis
 	 *            指定的毫秒数
 	 * @return 指定毫秒数表示日期按“年-月-日 时：分“格式显示
@@ -429,7 +429,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 指定日期的默认显示，具体格式：年-月-日 时：分
-	 * 
+	 *
 	 * @param cal
 	 *            指定的日期
 	 * @return 指定日期按“年-月-日 时：分“格式显示
@@ -440,7 +440,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 指定日期的默认显示，具体格式：年-月-日 时：分
-	 * 
+	 *
 	 * @param date
 	 *            指定的日期
 	 * @return 指定日期按“年-月-日 时：分“格式显示
@@ -456,7 +456,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 默认方式表示的系统当前日期，具体格式：时：分
-	 * 
+	 *
 	 * @return 默认日期按“时：分“格式显示
 	 */
 	public static String formatShortTime() {
@@ -465,7 +465,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 指定毫秒数表示日期的默认显示，具体格式：时：分
-	 * 
+	 *
 	 * @param millis
 	 *            指定的毫秒数
 	 * @return 指定毫秒数表示日期按“时：分“格式显示
@@ -476,7 +476,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 指定日期的默认显示，具体格式：时：分
-	 * 
+	 *
 	 * @param cal
 	 *            指定的日期
 	 * @return 指定日期按“时：分“格式显示
@@ -487,7 +487,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 指定日期的默认显示，具体格式：时：分
-	 * 
+	 *
 	 * @param date
 	 *            指定的日期
 	 * @return 指定日期按“时：分“格式显示
@@ -505,7 +505,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 根据指定的格式将字符串转换成Date 如输入：2003-11-19 11:20:20将按照这个转成时间
-	 * 
+	 *
 	 * @param src
 	 *            将要转换的原始字符窜
 	 * @param pattern
@@ -522,7 +522,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 根据指定的格式将字符串转换成Date 如输入：2003-11-19 11:20:20将按照这个转成时间
-	 * 
+	 *
 	 * @param src
 	 *            将要转换的原始字符窜
 	 * @param pattern
@@ -550,7 +550,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 根据指定的格式将字符串转换成Date 如输入：2003-11-19 11:20:20将按照这个转成时间
-	 * 
+	 *
 	 * @param src
 	 *            将要转换的原始字符窜
 	 * @param pattern
@@ -572,7 +572,7 @@ public class DateUtils extends PropertyEditorSupport {
 
 	/**
 	 * 计算两个时间之间的差值，根据标志的不同而不同
-	 * 
+	 *
 	 * @param flag
 	 *            计算标志，表示按照年/月/日/时/分/秒等计算
 	 * @param calSrc

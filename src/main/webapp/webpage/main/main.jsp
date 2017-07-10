@@ -86,8 +86,8 @@ a:hover {
 			beforePageText : '',
 			afterPageText : '/{pages}',
 			displayMsg : ''
-		});		
-		
+		});
+
 		$('#layout_jeecg_onlinePanel').panel({
 			tools : [ {
 				iconCls : 'icon-reload',
@@ -96,7 +96,7 @@ a:hover {
 				}
 			} ]
 		});
-		
+
 		$('#layout_east_calendar').calendar({
 			fit : true,
 			current : new Date(),
@@ -113,7 +113,7 @@ a:hover {
 		});
 	});
 	var onlineInterval;
-	
+
 	function easyPanelCollapase(){
 		window.clearTimeout(onlineInterval);
 	}
@@ -167,12 +167,9 @@ a:hover {
                     <div onclick="add('<t:mutiLang langKey="common.change.style"/>','userController.do?changestyle','',550,200)">
                         <t:mutiLang langKey="common.my.style"/>
                     </div>
-                    
+
                     <div class="menu-sep" ></div>
-                    <div onclick="window.open('http://yun.jeecg.org')">
-                         	云应用中心
-                    </div>
-                    
+
                     <div onclick="clearLocalstorage()">
                         <t:mutiLang langKey="common.clear.localstorage"/>
                     </div>
@@ -213,7 +210,7 @@ a:hover {
         <table id="layout_jeecg_onlineDatagrid"></table>
     </div>
     -->
-    
+
     <div class="easyui-layout" fit="true" border="false">
 		<div region="north" border="false" style="height:180px;overflow: hidden;">
 			<div id="tabs" class="easyui-tabs" border="false" style="height: 240px">

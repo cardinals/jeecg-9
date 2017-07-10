@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.lyq.ssj.service.accounttype.SsjAccountTypeServiceI;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -86,9 +87,9 @@ public class SsjAccountController extends BaseController {
 	private SystemService systemService;
 	@Autowired
 	private Validator validator;
+	@Autowired
+	private SsjAccountTypeServiceI ssjAccountTypeService;
 	
-
-
 	/**
 	 * 账户列表 页面跳转
 	 * 
@@ -188,6 +189,11 @@ public class SsjAccountController extends BaseController {
 		String message = null;
 		AjaxJson j = new AjaxJson();
 		message = "账户添加成功";
+		// 如果账户类型id不为空，获取账户类型,并设置到账户上
+		if(!StringUtil.isEmpty(ssjAccount.getAccountTypeId())) {
+			SsjAccountTypeEntity accountType = ssjAccountTypeService.get(SsjAccountTypeEntity.class,ssjAccount.getAccountTypeId());
+			ssjAccount.setAccountType(accountType.getAccountType());
+		}
 		try{
 			ssjAccountService.save(ssjAccount);
 			systemService.addLog(message, Globals.Log_Type_INSERT, Globals.Log_Leavel_INFO);
@@ -213,6 +219,11 @@ public class SsjAccountController extends BaseController {
 		AjaxJson j = new AjaxJson();
 		message = "账户更新成功";
 		SsjAccountEntity t = ssjAccountService.get(SsjAccountEntity.class, ssjAccount.getId());
+		// 如果账户类型id不为空，获取账户类型,并设置到账户上
+		if(!StringUtil.isEmpty(ssjAccount.getAccountTypeId())) {
+			SsjAccountTypeEntity accountType = ssjAccountTypeService.get(SsjAccountTypeEntity.class,ssjAccount.getAccountTypeId());
+			ssjAccount.setAccountType(accountType.getAccountType());
+		}
 		try {
 			MyBeanUtils.copyBeanNotNull2Bean(ssjAccount, t);
 			ssjAccountService.saveOrUpdate(t);

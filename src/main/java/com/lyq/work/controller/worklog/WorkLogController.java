@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
+import org.jeecgframework.core.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,14 +22,12 @@ import org.jeecgframework.core.common.hibernate.qbc.CriteriaQuery;
 import org.jeecgframework.core.common.model.json.AjaxJson;
 import org.jeecgframework.core.common.model.json.DataGrid;
 import org.jeecgframework.core.constant.Globals;
-import org.jeecgframework.core.util.StringUtil;
 import org.jeecgframework.tag.core.easyui.TagUtil;
 import org.jeecgframework.web.system.pojo.base.TSDepart;
 import org.jeecgframework.web.system.service.SystemService;
-import org.jeecgframework.core.util.MyBeanUtils;
 
 import java.io.OutputStream;
-import org.jeecgframework.core.util.BrowserUtils;
+
 import org.jeecgframework.poi.excel.ExcelExportUtil;
 import org.jeecgframework.poi.excel.ExcelImportUtil;
 import org.jeecgframework.poi.excel.entity.ExportParams;
@@ -37,12 +36,11 @@ import org.jeecgframework.poi.excel.entity.TemplateExportParams;
 import org.jeecgframework.poi.excel.entity.vo.NormalExcelConstants;
 import org.jeecgframework.poi.excel.entity.vo.TemplateExcelConstants;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.jeecgframework.core.util.ResourceUtil;
+
 import java.io.IOException;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.jeecgframework.core.util.ExceptionUtil;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -62,12 +60,12 @@ import java.net.URI;
 import org.springframework.http.MediaType;
 import org.springframework.web.util.UriComponentsBuilder;
 
-/**   
- * @Title: Controller  
+/**
+ * @Title: Controller
  * @Description: 工作日志
  * @author onlineGenerator
  * @date 2017-02-17 08:54:27
- * @version V1.0   
+ * @version V1.0
  *
  */
 @Controller
@@ -84,12 +82,12 @@ public class WorkLogController extends BaseController {
 	private SystemService systemService;
 	@Autowired
 	private Validator validator;
-	
+
 
 
 	/**
 	 * 工作日志列表 页面跳转
-	 * 
+	 *
 	 * @return
 	 */
 	@RequestMapping(params = "list")
@@ -99,7 +97,7 @@ public class WorkLogController extends BaseController {
 
 	/**
 	 * easyui AJAX请求数据
-	 * 
+	 *
 	 * @param request
 	 * @param response
 	 * @param dataGrid
@@ -131,7 +129,7 @@ public class WorkLogController extends BaseController {
 
 	/**
 	 * 删除工作日志
-	 * 
+	 *
 	 * @return
 	 */
 	@RequestMapping(params = "doDel")
@@ -152,10 +150,10 @@ public class WorkLogController extends BaseController {
 		j.setMsg(message);
 		return j;
 	}
-	
+
 	/**
 	 * 批量删除工作日志
-	 * 
+	 *
 	 * @return
 	 */
 	 @RequestMapping(params = "doBatchDel")
@@ -166,7 +164,7 @@ public class WorkLogController extends BaseController {
 		message = "工作日志删除成功";
 		try{
 			for(String id:ids.split(",")){
-				WorkLogEntity workLog = systemService.getEntity(WorkLogEntity.class, 
+				WorkLogEntity workLog = systemService.getEntity(WorkLogEntity.class,
 				id
 				);
 				workLogService.delete(workLog);
@@ -184,7 +182,7 @@ public class WorkLogController extends BaseController {
 
 	/**
 	 * 添加工作日志
-	 * 
+	 *
 	 * @param ids
 	 * @return
 	 */
@@ -205,10 +203,10 @@ public class WorkLogController extends BaseController {
 		j.setMsg(message);
 		return j;
 	}
-	
+
 	/**
 	 * 更新工作日志
-	 * 
+	 *
 	 * @param ids
 	 * @return
 	 */
@@ -231,11 +229,11 @@ public class WorkLogController extends BaseController {
 		j.setMsg(message);
 		return j;
 	}
-	
+
 
 	/**
 	 * 工作日志新增页面跳转
-	 * 
+	 *
 	 * @return
 	 */
 	@RequestMapping(params = "goAdd")
@@ -244,13 +242,15 @@ public class WorkLogController extends BaseController {
 			workLog = workLogService.getEntity(WorkLogEntity.class, workLog.getId());
 		} else {
 			workLog.setDate(new Date());// 设置默认日期
+			workLog.setTitle(DateUtils.getDate("YYYYMMdd"));// 设置默认标题
 		}
 		req.setAttribute("workLogPage", workLog);
 		return new ModelAndView("com/lyq/work/worklog/workLog-add");
 	}
+
 	/**
 	 * 工作日志编辑页面跳转
-	 * 
+	 *
 	 * @return
 	 */
 	@RequestMapping(params = "goUpdate")
@@ -261,10 +261,10 @@ public class WorkLogController extends BaseController {
 		}
 		return new ModelAndView("com/lyq/work/worklog/workLog-update");
 	}
-	
+
 	/**
 	 * 导入功能跳转
-	 * 
+	 *
 	 * @return
 	 */
 	@RequestMapping(params = "upload")
@@ -272,10 +272,10 @@ public class WorkLogController extends BaseController {
 		req.setAttribute("controller_name","workLogController");
 		return new ModelAndView("common/upload/pub_excel_upload");
 	}
-	
+
 	/**
 	 * 导出excel
-	 * 
+	 *
 	 * @param request
 	 * @param response
 	 */
@@ -294,7 +294,7 @@ public class WorkLogController extends BaseController {
 	}
 	/**
 	 * 导出excel 使模板
-	 * 
+	 *
 	 * @param request
 	 * @param response
 	 */
@@ -308,13 +308,13 @@ public class WorkLogController extends BaseController {
     	modelMap.put(NormalExcelConstants.DATA_LIST,new ArrayList());
     	return NormalExcelConstants.JEECG_EXCEL_VIEW;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@RequestMapping(params = "importExcel", method = RequestMethod.POST)
 	@ResponseBody
 	public AjaxJson importExcel(HttpServletRequest request, HttpServletResponse response) {
 		AjaxJson j = new AjaxJson();
-		
+
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
 		Map<String, MultipartFile> fileMap = multipartRequest.getFileMap();
 		for (Map.Entry<String, MultipartFile> entity : fileMap.entrySet()) {
@@ -342,14 +342,14 @@ public class WorkLogController extends BaseController {
 		}
 		return j;
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public List<WorkLogEntity> list() {
 		List<WorkLogEntity> listWorkLogs=workLogService.getList(WorkLogEntity.class);
 		return listWorkLogs;
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<?> get(@PathVariable("id") String id) {

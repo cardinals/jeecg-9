@@ -55,7 +55,7 @@
                 </label>
             </td>
             <td class="value">
-                <input id="date" name="date" type="text" style="width: 150px" class="Wdate" onClick="WdatePicker()"
+                <input id="date" name="date" type="text" style="width: 150px" class="Wdate" onchange="changeDate(this)" onClick="WdatePicker()"
                        value='<fmt:formatDate value='${workLogPage.date}' type="date" pattern="yyyy-MM-dd"/>'>
                 <span class="Validform_checktip"></span>
                 <label class="Validform_label" style="display: none;">日期</label>

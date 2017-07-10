@@ -17,6 +17,7 @@
    <t:dgCol title="标题"  field="title"   query="true" queryMode="single"  width="250"></t:dgCol>
    <t:dgCol title="内容"  field="content"   query="true" queryMode="single"  width="300"></t:dgCol>
    <t:dgCol title="日期"  field="date" formatter="yyyy-MM-dd"  query="true" queryMode="group"  width="120"></t:dgCol>
+   <t:dgCol title="工作日"  field="week" query="false" width="250"></t:dgCol>
    <t:dgCol title="操作" field="opt" width="100"></t:dgCol>
    <t:dgDelOpt title="删除" url="workLogController.do?doDel&id={id}" />
    <t:dgToolBar title="录入" icon="icon-add" url="workLogController.do?goAdd" funname="add"></t:dgToolBar>
@@ -29,7 +30,7 @@
   </t:datagrid>
   </div>
  </div>
- <script src = "webpage/com/lyq/work/worklog/workLogList.js"></script>		
+ <script src = "webpage/com/lyq/work/worklog/workLogList.js"></script>
  <script type="text/javascript">
  $(document).ready(function(){
  		//给时间控件加上样式
@@ -38,9 +39,9 @@
  			$("#workLogListtb").find("input[name='date_begin']").attr("class","Wdate").click(function(){WdatePicker({dateFmt:'yyyy-MM-dd'});});
  			$("#workLogListtb").find("input[name='date_end']").attr("class","Wdate").click(function(){WdatePicker({dateFmt:'yyyy-MM-dd'});});
  });
- 
-   
- 
+
+
+
 //导入
 function ImportXls() {
 	openuploadwin('Excel导入', 'workLogController.do?upload', "workLogList");

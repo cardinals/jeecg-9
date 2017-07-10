@@ -1,4 +1,8 @@
-
+// 修改日期事件
+function changeDate(date) {
+	//$('#title').val(date.value.replace(/-/g,""));// 两种方式都可以替换全部
+	$('#title').val(date.value.replace(new RegExp("-","gm"),""));
+}
 
 //通用弹出式文件上传
 function commonUpload(callback){
@@ -18,12 +22,12 @@ function commonUpload(callback){
        },
        cancelVal: '关闭',
        cancel: function(){
-       } 
+       }
    });
 }
 function browseImages(inputId, Img) {// 图片管理器，可多个上传共用
 		var finder = new CKFinder();
-		finder.selectActionFunction = function(fileUrl, data) {//设置文件被选中时的函数 
+		finder.selectActionFunction = function(fileUrl, data) {//设置文件被选中时的函数
 			$("#" + Img).attr("src", fileUrl);
 			$("#" + inputId).attr("value", fileUrl);
 		};
@@ -35,7 +39,7 @@ function browseImages(inputId, Img) {// 图片管理器，可多个上传共用
 	}
 function browseFiles(inputId, file) {// 文件管理器，可多个上传共用
 	var finder = new CKFinder();
-	finder.selectActionFunction = function(fileUrl, data) {//设置文件被选中时的函数 
+	finder.selectActionFunction = function(fileUrl, data) {//设置文件被选中时的函数
 		$("#" + file).attr("href", fileUrl);
 		$("#" + inputId).attr("value", fileUrl);
 		decode(fileUrl, file);
