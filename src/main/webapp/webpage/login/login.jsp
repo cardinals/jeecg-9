@@ -12,7 +12,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta charset="utf-8" />
   <title><t:mutiLang langKey="jeect.platform"/></title>
-   <link rel="shortcut icon" href="images/favicon.ico">
+   <link rel="shortcut icon" href="images/xb.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <!-- bootstrap & fontawesome -->
   <link rel="stylesheet" href="plug-in/ace/css/bootstrap.css" />
@@ -50,10 +50,9 @@
         <div class="login-container">
           <div class="center">
             <h1 id="id-text2" class="grey">
-              <i class="ace-icon fa fa-leaf green"></i>
-               JEECG 演示系统
+              <i class="ace-icon fa fa-cloud green"></i>
+               小白开发平台
             </h1>
-            <h4 class="blue" id="id-company-text">www.jeecg.org</h4>
           </div>
           <div class="space-6"></div>
           <div class="position-relative">
@@ -66,7 +65,7 @@
 				  <div id="showErrMsg"></div>
 				</div>
                   <h4 class="header blue lighter bigger">
-                    <i class="ace-icon fa fa-coffee green"></i>
+                    <i class="ace-icon fa fa-user green"></i>
                 	    用户登录
                   </h4>
                   <div class="space-6"></div>
@@ -114,7 +113,6 @@
                 </form>
               </div>
             </div>
-            <div class="center"><h4 class="blue" id="id-company-text">&copy; JEECG版权所有 v_3.6.5</h4></div>
             <div class="navbar-fixed-top align-right">
               <br />
               &nbsp;
@@ -270,7 +268,7 @@
   function showErrorMsg(msg){
     $("#errMsgContiner").show();
     $("#showErrMsg").html(msg);
-    window.setTimeout(optErrMsg,3000); 
+    window.setTimeout(optErrMsg,3000);
   }
   /**
    * 刷新验证码
@@ -304,6 +302,8 @@ function reloadRandCodeImage() {
 
     e.preventDefault();
   }
+  // 设置风格
+  blurStyle();
 //设置cookie
   function setCookie()
   {
@@ -335,7 +335,7 @@ function reloadRandCodeImage() {
           });
   		$("#on_off").attr("checked", true);
   		$("#on_off").val("1");
-  	} 
+  	}
   	else
   	{
   		$("#on_off").attr("checked", false);
