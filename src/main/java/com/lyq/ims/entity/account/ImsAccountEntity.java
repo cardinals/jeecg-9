@@ -1,22 +1,35 @@
-package com.lyq.ssj.entity.tally;
+package com.lyq.ims.entity.account;
 
+import java.math.BigDecimal;
+import java.util.Date;
+import java.lang.String;
+import java.lang.Double;
+import java.lang.Integer;
+import java.math.BigDecimal;
+import javax.xml.soap.Text;
+import java.sql.Blob;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
+import javax.persistence.SequenceGenerator;
 import org.jeecgframework.poi.excel.annotation.Excel;
 
-import javax.persistence.*;
-
-/**
+/**   
  * @Title: Entity
- * @Description: 记账
+ * @Description: 账户
  * @author onlineGenerator
- * @date 2017-03-01 23:04:33
- * @version V1.0
+ * @date 2017-08-08 16:49:11
+ * @version V1.0   
  *
  */
 @Entity
-@Table(name = "ssj_tally", schema = "")
+@Table(name = "ims_account", schema = "")
 @SuppressWarnings("serial")
-public class SsjTallyEntity implements java.io.Serializable {
+public class ImsAccountEntity implements java.io.Serializable {
 	/**主键*/
 	private java.lang.String id;
 	/**创建人名称*/
@@ -37,19 +50,22 @@ public class SsjTallyEntity implements java.io.Serializable {
 	private java.lang.String sysCompanyCode;
 	/**流程状态*/
 	private java.lang.String bpmStatus;
-	/**时间*/
-	@Excel(name="时间",format = "yyyy-MM-dd")
-	private java.util.Date time;
+	/**标题*/
+	@Excel(name="标题")
+	private java.lang.String title;
+	/**账户名*/
+	@Excel(name="账户名")
+	private java.lang.String account;
+	/**密码*/
+	@Excel(name="密码")
+	private java.lang.String password;
+	/**网址*/
+	@Excel(name="网址")
+	private java.lang.String url;
 	/**备注*/
 	@Excel(name="备注")
-	private java.lang.String memo;
-	/**账户*/
-	@Excel(name="账户")
-	private java.lang.String account;
-	/**金额*/
-	@Excel(name="金额")
-	private java.lang.Double price;
-
+	private java.lang.String remark;
+	
 	/**
 	 *方法: 取得java.lang.String
 	 *@return: java.lang.String  主键
@@ -214,40 +230,24 @@ public class SsjTallyEntity implements java.io.Serializable {
 		this.bpmStatus = bpmStatus;
 	}
 	/**
-	 *方法: 取得java.util.Date
-	 *@return: java.util.Date  时间
-	 */
-	@Column(name ="TIME",nullable=true,length=32)
-	public java.util.Date getTime(){
-		return this.time;
-	}
-
-	/**
-	 *方法: 设置java.util.Date
-	 *@param: java.util.Date  时间
-	 */
-	public void setTime(java.util.Date time){
-		this.time = time;
-	}
-	/**
 	 *方法: 取得java.lang.String
-	 *@return: java.lang.String  备注
+	 *@return: java.lang.String  标题
 	 */
-	@Column(name ="MEMO",nullable=true,length=32)
-	public java.lang.String getMemo(){
-		return this.memo;
+	@Column(name ="TITLE",nullable=true,length=32)
+	public java.lang.String getTitle(){
+		return this.title;
 	}
 
 	/**
 	 *方法: 设置java.lang.String
-	 *@param: java.lang.String  备注
+	 *@param: java.lang.String  标题
 	 */
-	public void setMemo(java.lang.String memo){
-		this.memo = memo;
+	public void setTitle(java.lang.String title){
+		this.title = title;
 	}
 	/**
 	 *方法: 取得java.lang.String
-	 *@return: java.lang.String  账户
+	 *@return: java.lang.String  账户名
 	 */
 	@Column(name ="ACCOUNT",nullable=true,length=32)
 	public java.lang.String getAccount(){
@@ -256,25 +256,57 @@ public class SsjTallyEntity implements java.io.Serializable {
 
 	/**
 	 *方法: 设置java.lang.String
-	 *@param: java.lang.String  账户
+	 *@param: java.lang.String  账户名
 	 */
 	public void setAccount(java.lang.String account){
 		this.account = account;
 	}
 	/**
-	 *方法: 取得java.lang.Double
-	 *@return: java.lang.Double  金额
+	 *方法: 取得java.lang.String
+	 *@return: java.lang.String  密码
 	 */
-	@Column(name ="PRICE",nullable=true,length=32)
-	public java.lang.Double getPrice(){
-		return this.price;
+	@Column(name ="PASSWORD",nullable=true,length=32)
+	public java.lang.String getPassword(){
+		return this.password;
 	}
 
 	/**
-	 *方法: 设置java.lang.Double
-	 *@param: java.lang.Double  金额
+	 *方法: 设置java.lang.String
+	 *@param: java.lang.String  密码
 	 */
-	public void setPrice(java.lang.Double price){
-		this.price = price;
+	public void setPassword(java.lang.String password){
+		this.password = password;
+	}
+	/**
+	 *方法: 取得java.lang.String
+	 *@return: java.lang.String  网址
+	 */
+	@Column(name ="URL",nullable=true,length=200)
+	public java.lang.String getUrl(){
+		return this.url;
+	}
+
+	/**
+	 *方法: 设置java.lang.String
+	 *@param: java.lang.String  网址
+	 */
+	public void setUrl(java.lang.String url){
+		this.url = url;
+	}
+	/**
+	 *方法: 取得java.lang.String
+	 *@return: java.lang.String  备注
+	 */
+	@Column(name ="REMARK",nullable=true,length=200)
+	public java.lang.String getRemark(){
+		return this.remark;
+	}
+
+	/**
+	 *方法: 设置java.lang.String
+	 *@param: java.lang.String  备注
+	 */
+	public void setRemark(java.lang.String remark){
+		this.remark = remark;
 	}
 }

@@ -114,7 +114,10 @@
 						<value>cgFormDataController.do?updateFormInfo</value>
 
 						<!--对外接口-->
+						<!--工作日志-->
 						<value>wsWorkLogController.do?list</value>
+						<!--账户信息-->
+						<value>wsImsAccountController.do?list</value>
 
 					</list>
 				</property>

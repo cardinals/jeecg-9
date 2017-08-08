@@ -54,7 +54,7 @@
 							</label>
 						</td>
 						<td class="value">
-						  	 	<textarea id="content" style="width:600px;" class="inputxt" rows="6" name="content">${workDemandPage.content}</textarea>
+						  	 	<textarea id="content" style="width:600px;height: 100px;" class="inputxt" rows="6" name="content">${workDemandPage.content}</textarea>
 							<span class="Validform_checktip"></span>
 							<label class="Validform_label" style="display: none;">需求内容</label>
 						</td>
@@ -111,7 +111,7 @@
 							</label>
 						</td>
 						<td class="value">
-						  	 	<textarea id="finishRemark" style="width:600px;" class="inputxt" rows="6" name="finishRemark">${workDemandPage.finishRemark}</textarea>
+						  	 	<textarea id="finishRemark" style="width:600px;height: 100px;" class="inputxt" rows="6" name="finishRemark">${workDemandPage.finishRemark}</textarea>
 							<span class="Validform_checktip"></span>
 							<label class="Validform_label" style="display: none;">完成备注</label>
 						</td>

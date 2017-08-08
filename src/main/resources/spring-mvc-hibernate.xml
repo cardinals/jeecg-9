@@ -31,6 +31,9 @@
 	<context:component-scan base-package="com.lyq.work.*">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
+	<context:component-scan base-package="com.lyq.ims.*">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
 
 	<!-- 引入属性文件 -->
 	<context:property-placeholder location="classpath:dbconfig.properties" />
@@ -119,6 +122,7 @@
 				<value>org.jeecgframework.web.system.sms.*</value>
 				<value>com.lyq.ssj.*</value>
 				<value>com.lyq.work.*</value>
+				<value>com.lyq.ims.*</value>
 				<value>com.jeecg.*</value>
 			</list>
 		</property>

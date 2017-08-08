@@ -47,7 +47,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * 
+ *
  * @Title:CgAutoListController
  * @description:动态列表控制器[根据表名读取配置文件，进行动态数据展现]
  * @author 赵俊夫
@@ -126,7 +126,7 @@ public class CgAutoListController extends BaseController{
 	 * @param configId 配置id 修正使用id会造成主键查询的冲突
 	 * @param page 分页页面
 	 * @param rows 分页大小
-	 * @param request 
+	 * @param request
 	 * @param response
 	 * @param dataGrid
 	 */
@@ -177,7 +177,7 @@ public class CgAutoListController extends BaseController{
 			}
 		}
 
-		
+
 		int p = page==null?1:Integer.parseInt(page);
 		int r = rows==null?99999:Integer.parseInt(rows);
 		//step.3 进行查询返回结果，如果为tree的下级数据，则不需要分页
@@ -189,14 +189,14 @@ public class CgAutoListController extends BaseController{
 		}else {
 			result=cgTableService.querySingle(table, field.toString(), params,sort,order, p,r );
 		}
-		
+
 		//treeform 处理是否有下级菜单
 		if(isTree) {
 			cgTableService.treeFromResultHandle(table, parentIdFieldName, parentIdFieldType,
 					result);
 		}
 
-		
+
 		//处理页面中若存在checkbox只能显示code值而不能显示text值问题
 		Map<String, Object> dicMap = new HashMap<String, Object>();
 		for(CgFormFieldEntity b:beans){
@@ -215,12 +215,12 @@ public class CgAutoListController extends BaseController{
 									sb.append(dictEntity.getTypename());
 									sb.append(",");
 								}
-								
+
 							}
 						}
 						resultMap.put(b.getFieldName(), sb.toString().substring(0, sb.toString().length()-1));
 					}
-					
+
 				}
 			}
 		}
@@ -251,7 +251,7 @@ public class CgAutoListController extends BaseController{
 		long end = System.currentTimeMillis();
 		log.debug("动态列表查询耗时："+(end-start)+" ms");
 	}
-	
+
 	/**
 	 * 处理数据字典
 	 * @param result 查询的结果集
@@ -339,12 +339,12 @@ public class CgAutoListController extends BaseController{
 		j.setMsg(message);
 		return j;
 	}
-	
+
 	/**
 	 * 装载要传入到ftl中的变量
 	 * @param configs 从数据库中取出来的配置
 	 * @param paras 要传入ftl的参数（需要对configs进行一些改造）
-	 * @param request 
+	 * @param request
 	 * @return 要传入ftl的参数（该方法直接操作paras容器，当然可以使用此返回值）
 	 */
 	@SuppressWarnings("unchecked")
@@ -425,7 +425,7 @@ public class CgAutoListController extends BaseController{
 			HttpServletRequest request) {
 		HttpSession session = ContextHolderUtils.getSession();
 		String lang = (String)session.getAttribute("lang");
-		
+
 		//如果列表以iframe形式的话，需要加入样式文件
 		StringBuilder sb= new StringBuilder("");
 		if(!request.getQueryString().contains("isHref")){
@@ -460,7 +460,7 @@ public class CgAutoListController extends BaseController{
 //			sb.append("<script type=\"text/javascript\" src=\"plug-in/lhgDialog/lhgdialog.min.js\"></script>");
 			sb.append(SysThemesUtil.getLhgdialogTheme(sysThemesEnum));
 			sb.append(StringUtil.replace("<script type=\"text/javascript\" src=\"plug-in/tools/curdtools_{0}.js\"></script>", "{0}", lang));
-			
+
 			sb.append("<script type=\"text/javascript\" src=\"plug-in/tools/easyuiextend.js\"></script>");
 //			if("metro".equals(cssTheme)){
 //				sb.append("<link id=\"easyuiTheme\" rel=\"stylesheet\" href=\"plug-in/easyui/themes/"+cssTheme+"/main.css\" type=\"text/css\"></link>");
@@ -629,7 +629,7 @@ public class CgAutoListController extends BaseController{
 //		List<Map<String, Object>> dicDatas = systemService.findForJdbc(dicSql.toString());
 		return systemService.queryDict(dicTable, dicCode, dicText);
 	}
-	
+
 	private String getSystemValue(String sysVarName) {
 		if(StringUtil.isEmpty(sysVarName)){
 			return sysVarName;
@@ -639,7 +639,7 @@ public class CgAutoListController extends BaseController{
 			sysVarName = sysVarName.replaceAll("\\}", "");
 			sysVarName =sysVarName.replace("sys.", "");
 			//---author:jg_xugj----start-----date:20151226--------for：#814 【数据权限】扩展支持写表达式，通过session取值
-			return ResourceUtil.converRuleValue(sysVarName); 		
+			return ResourceUtil.converRuleValue(sysVarName);
 		}else{
 			return sysVarName;
 		}
