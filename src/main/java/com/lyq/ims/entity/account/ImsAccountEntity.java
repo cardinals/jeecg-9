@@ -1,29 +1,16 @@
 package com.lyq.ims.entity.account;
 
-import java.math.BigDecimal;
-import java.util.Date;
-import java.lang.String;
-import java.lang.Double;
-import java.lang.Integer;
-import java.math.BigDecimal;
-import javax.xml.soap.Text;
-import java.sql.Blob;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
-import javax.persistence.SequenceGenerator;
 import org.jeecgframework.poi.excel.annotation.Excel;
 
-/**   
+import javax.persistence.*;
+
+/**
  * @Title: Entity
  * @Description: 账户
  * @author onlineGenerator
  * @date 2017-08-08 16:49:11
- * @version V1.0   
+ * @version V1.0
  *
  */
 @Entity
@@ -65,7 +52,7 @@ public class ImsAccountEntity implements java.io.Serializable {
 	/**备注*/
 	@Excel(name="备注")
 	private java.lang.String remark;
-	
+
 	/**
 	 *方法: 取得java.lang.String
 	 *@return: java.lang.String  主键

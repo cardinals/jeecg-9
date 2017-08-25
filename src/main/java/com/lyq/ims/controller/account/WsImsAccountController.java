@@ -57,7 +57,7 @@ public class WsImsAccountController {
 			}
 			//签名验证
 			Map<String, String> paramMap = new HashMap<String, String>();
-			paramMap.put("method", "list");
+//			paramMap.put("method", "list");
 			if(!SignatureUtil.checkSign(paramMap, SIGN_KEY, sign)){
 				throw new BusinessException("签名验证失败");
 			}
@@ -76,7 +76,7 @@ public class WsImsAccountController {
 	public static void main(String[] args) {
 //		sign=61CB81BAEE8E9134BF7AA846634C3CED
 		Map<String, String> paramMap = new HashMap<String, String>();
-		paramMap.put("method", "list");
+//		paramMap.put("method", "list");
 		System.out.println(SignatureUtil.sign(paramMap, SIGN_KEY));
 	}
 }
