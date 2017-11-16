@@ -252,7 +252,8 @@ public class WorkDemandController extends BaseController {
         if (StringUtil.isNotEmpty(workDemand.getId())) {
             workDemand = workDemandService.getEntity(WorkDemandEntity.class, workDemand.getId());
         } else {
-            workDemand.setBpmStatus("1");// 默认为解决
+            workDemand.setBpmStatus("1");// 默认未解决
+            workDemand.setLevel("1");// 默认等级1
             workDemand.setProposeDate(new Date());// 设置默认提出日期
             workDemand.setProposeMan(ResourceUtil.getSessionUserName().getRealName());// 设置提出人
         }

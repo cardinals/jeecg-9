@@ -101,7 +101,7 @@ public class WorkDemandEntity implements java.io.Serializable {
      * 级别
      */
     @Excel(name = "级别")
-    private java.lang.String level = "1";
+    private java.lang.String level;
 
     /**
      * 方法: 取得java.lang.String

@@ -118,6 +118,8 @@
 						<value>wsWorkLogController.do?list</value>
 						<!--账户信息-->
 						<value>wsImsAccountController.do?list</value>
+						<!--需求单-->
+						<value>wsWorkDemandController.do?list</value>
 
 					</list>
 				</property>
