@@ -215,7 +215,6 @@ public class CgFormDataController {
 				try {
 					formData = new HashMap<String, Object>();
 					formData = JSONHelper.json2Map(data);
-					formData = Underline2Camel.mapKeyHumpToLine(formData);
 				} catch (Exception e) {
 					throw new BusinessException("json解析异常");
 				}
@@ -241,6 +240,8 @@ public class CgFormDataController {
 					throw new BusinessException("json解析异常");
 				}
 //				Map<String,List<Map<String,Object>>> mapMore =CommUtils.mapConvertMore(formData, tableName);
+				// 将字段名改为下划线风格
+				formData = Underline2Camel.mapKeyHumpToLine(formData);
 				dataBaseService.insertTableMore(formData, tableName);
 			}
 	        j.setMsg("新增表单数据成功");
@@ -309,8 +310,6 @@ public class CgFormDataController {
 				try {
 					formData = new HashMap<String, Object>();
 					formData = JSONHelper.json2Map(data);
-					// 将字段名改为下划线风格
-					formData = Underline2Camel.mapKeyHumpToLine(formData);
 				} catch (Exception e) {
 					throw new BusinessException("json解析异常");
 				}
@@ -334,7 +333,9 @@ public class CgFormDataController {
 				} catch (Exception e) {
 					throw new BusinessException("json解析异常");
 				}
-//				Map<String,List<Map<String,Object>>> mapMore =CommUtils.mapConvertMore(formData, tableName);
+				Map<String,List<Map<String,Object>>> mapMore =CommUtils.mapConvertMore(formData, tableName);
+				// 将字段名改为下划线风格
+				formData = Underline2Camel.mapKeyHumpToLine(formData);
 				dataBaseService.updateTableMore(formData, tableName);
 			}
 	        j.setMsg("更新表单数据成功");
