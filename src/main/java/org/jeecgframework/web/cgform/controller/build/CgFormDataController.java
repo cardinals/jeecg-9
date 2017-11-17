@@ -12,6 +12,7 @@ import org.apache.commons.lang.StringUtils;
 import org.jeecgframework.core.common.exception.BusinessException;
 import org.jeecgframework.core.util.JSONHelper;
 import org.jeecgframework.core.util.StringUtil;
+import org.jeecgframework.core.util.Underline2Camel;
 import org.jeecgframework.web.cgform.common.CommUtils;
 import org.jeecgframework.web.cgform.entity.config.CgFormHeadEntity;
 import org.jeecgframework.web.cgform.service.autolist.CgTableServiceI;
@@ -37,17 +38,17 @@ public class CgFormDataController {
 	 * 签名密钥key
 	 */
 	private static final String SIGN_KEY = "26F72780372E84B6CFAED6F7B19139CC47B1912B6CAED753";
-	
+
 	/**
 	 * online表单对外接口：getFormInfo 获取表单数据
-	 * 注意： 
+	 * 注意：
 	 * @return
 	 */
 	@RequestMapping(params = "getFormInfo")
 	@ResponseBody
 	public TableJson getFormInfo(String tableName,
-								 String id, 
-								 String sign, 
+								 String id,
+								 String sign,
 								 HttpServletRequest request,HttpServletResponse response) {
 		TableJson j = new TableJson();
 		try {
@@ -74,7 +75,7 @@ public class CgFormDataController {
 			if(head==null){
 				throw new BusinessException("该表单不是online表单");
 			}
-			
+
 			if(head.getJformType()==1){
 				//单表
 				j.setTableType(head.getJformType());
@@ -108,17 +109,17 @@ public class CgFormDataController {
 		}
 		return j;
 	}
-	
+
 	/**
 	 * online表单对外接口：deleteFormInfo 删除表单数据
-	 * 注意： 
+	 * 注意：
 	 * @return
 	 */
 	@RequestMapping(params = "deleteFormInfo")
 	@ResponseBody
 	public TableJson deleteFormInfo(String tableName,
-									String id, 
-									String sign, 
+									String id,
+									String sign,
 									HttpServletRequest request,HttpServletResponse response) {
 		TableJson j = new TableJson();
 		try {
@@ -159,11 +160,11 @@ public class CgFormDataController {
 		}
 		return j;
 	}
-	
-	
+
+
 	/**
 	 * online表单对外接口：addFormInfo 新增表单数据
-	 * 注意： 
+	 * 注意：
 	 * @return
 	 */
 	@RequestMapping(params = "addFormInfo")
@@ -214,6 +215,7 @@ public class CgFormDataController {
 				try {
 					formData = new HashMap<String, Object>();
 					formData = JSONHelper.json2Map(data);
+					formData = Underline2Camel.mapKeyHumpToLine(formData);
 				} catch (Exception e) {
 					throw new BusinessException("json解析异常");
 				}
@@ -249,14 +251,14 @@ public class CgFormDataController {
 			j.setSuccess(false);
 			j.setMsg("系统异常");
 		}
-		
+
 		return j;
 	}
-	
-	
+
+
 	/**
 	 * online表单对外接口：updateFormInfo 更新表单数据
-	 * 注意： 
+	 * 注意：
 	 * @return
 	 */
 	@RequestMapping(params = "updateFormInfo")
@@ -307,6 +309,8 @@ public class CgFormDataController {
 				try {
 					formData = new HashMap<String, Object>();
 					formData = JSONHelper.json2Map(data);
+					// 将字段名改为下划线风格
+					formData = Underline2Camel.mapKeyHumpToLine(formData);
 				} catch (Exception e) {
 					throw new BusinessException("json解析异常");
 				}
@@ -344,6 +348,6 @@ public class CgFormDataController {
 		return j;
 	}
 
-	
+
 
 }
